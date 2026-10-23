@@ -1,4 +1,5 @@
 ---
+
 title: "练习1:位操作"
 published: 2025-03-11
 tags: ["笔记", "计组", "CS"]
@@ -7,6 +8,7 @@ draft: false
 ---
 
 # 练习1:位操作
+
 ```c
 #include <stdio.h>
 #include "bit_ops.h"
@@ -38,5 +40,6 @@ void flip_bit(unsigned * x,
 }
 ```
 # 练习2:线性反馈移位寄存器
+
     实现了一个线性反馈移位寄存器
 # 练习3:内存管理

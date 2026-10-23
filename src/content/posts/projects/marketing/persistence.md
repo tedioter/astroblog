@@ -1,4 +1,5 @@
 ---
+
 title: "基础层持久化数据"
 published: 2025-07-14
 tags: ["项目", "营销系统", "DDD"]
@@ -7,7 +8,9 @@ draft: false
 ---
 
 # 基础层持久化数据
+
 ## 架构
+
     - persistent
         - dao接口(用来对接app层resources包下mybatis查询xml文件,需要加上mapper注解)
         - po(数据库实体类)

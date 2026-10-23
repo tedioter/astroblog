@@ -1,4 +1,5 @@
 ---
+
 title: "resp协议的解析"
 published: 2025-05-14
 tags: ["项目", "Redis", "Go"]
@@ -106,6 +107,7 @@ public abstract class Resp {
 }
 ```
 ## RespDecoder,RespCommandHandler,RespEncoder的实现
+
 > RespDecoder
 ```java
 public class RespDecoder extends ByteToMessageDecoder {
@@ -137,6 +139,7 @@ public class RespDecoder extends ByteToMessageDecoder {
     }
 }
 ```
+
 - RespCommandHandler的构造需要redisCore,命令的处理构造过程需要redisCore,redisCore是核心储存区域
 > RespCommandHandler
 ```java
@@ -205,6 +208,7 @@ public class RespEncoder extends MessageToByteEncoder<Resp> {
 }
 ```
 ## 创建Command接口,实现类以及枚举类CommandType
+
 > Command接口
 ```java
 public interface Command {

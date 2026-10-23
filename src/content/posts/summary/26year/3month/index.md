@@ -1,4 +1,5 @@
 ---
+
 title: "2026年3月份summary"
 published: 2026-03-01
 tags: ["周报", "总结"]
@@ -7,4 +8,5 @@ draft: false
 ---
 
 # 2026年3月份summary
-  for get a chance of internship,i learn project and algorithm always.Hard work pays off.I get a intership offer from a company in sanya.I am very happy.I hope i can learn more from this internship experience.
+
+for get a chance of internship,i learn project and algorithm always.Hard work pays off.I get a intership offer from a company in sanya.I am very happy.I hope i can learn more from this internship experience.

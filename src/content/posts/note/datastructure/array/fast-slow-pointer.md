@@ -1,4 +1,5 @@
 ---
+
 title: "快慢指针"
 published: 2025-03-11
 tags: ["笔记", "数据结构", "算法", "数组"]
@@ -20,11 +21,11 @@ draft: false
 输入：nums = [0,1,2,2,3,0,4,2], val = 2
 输出：5, nums = [0,1,4,0,3,_,_,_]
 解释：你的函数应该返回 k = 5，并且 nums 中的前五个元素为 0,0,1,3,4。
-注意这五个元素可以任意顺序返回。 
+注意这五个元素可以任意顺序返回。
 
 解法:
 暴力解法:
-``` java
+```java
 class Solution {
 public int removeElement(int[] nums, int val) {
 // 暴力法
@@ -43,7 +44,7 @@ return n;
 }
 ```
 快慢指针法:
-``` java
+```java
 class Solution {
 public int removeElement(int[] nums, int val) {
 // 快慢指针

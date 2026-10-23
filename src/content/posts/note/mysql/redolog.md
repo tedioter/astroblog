@@ -1,4 +1,5 @@
 ---
+
 title: "MySQL 数据更新全流程笔记（含问题与解决方案）"
 published: 2025-12-22
 tags: ["笔记", "MySQL", "数据库"]
@@ -19,16 +20,12 @@ draft: false
 3. **记录 undo log（内存）**：在内存中记录本次修改的「旧值」（如 name 原来的值），用于后续事务回滚和 MVCC 多版本并发控制。
 
 4. **记录 redo log（日志先行，关键步骤）**：
-        
-    - 先将修改记录（“某页某位置，从旧值改为新值”）写入 redo log buffer（内存日志缓冲区）；
+   - 先将修改记录（“某页某位置，从旧值改为新值”）写入 redo log buffer（内存日志缓冲区）；
+     - 事务执行 commit 时，将 redo log buffer 中的内容刷到磁盘的 redo log file（ib_logfile0/1）；
+       - 只要 redo log 落盘成功，事务即视为提交成功（WAL 机制：Write-Ahead Logging，先写日志，再写磁盘）。
+         - redolog刷盘是原子性的,如果宕机则会根据校验和直接截断非法日志,因此即使将事务commit了,但redolog没有刷盘成功,这个事务就不算提交成功.
 
-    - 事务执行 commit 时，将 redo log buffer 中的内容刷到磁盘的 redo log file（ib_logfile0/1）；
-
-    - 只要 redo log 落盘成功，事务即视为提交成功（WAL 机制：Write-Ahead Logging，先写日志，再写磁盘）。
- 
-    - redolog刷盘是原子性的,如果宕机则会根据校验和直接截断非法日志,因此即使将事务commit了,但redolog没有刷盘成功,这个事务就不算提交成功.
-
-1. **后台异步刷脏页到磁盘**：事务提交后，MySQL 后台线程会找系统空闲时间，将 Buffer Pool 中的 16KB 脏页，慢慢刷到磁盘的数据页中，完成内存与磁盘的同步。
+5. **后台异步刷脏页到磁盘**：事务提交后，MySQL 后台线程会找系统空闲时间，将 Buffer Pool 中的 16KB 脏页，慢慢刷到磁盘的数据页中，完成内存与磁盘的同步。
 
 ## 二、更新过程中遇到的 3 个致命问题
 
@@ -75,11 +72,8 @@ draft: false
 3. 页安全保障：双写机制防止刷盘时数据页损坏，是 redo log 能正常工作的前提；
 
 4. 崩溃恢复逻辑：
-        
-
-    - 未刷盘宕机：磁盘旧页完好 → 直接用 redo log 恢复；
-
-    - 刷盘一半宕机：双写先修复坏页 → 再用 redo log 恢复；
+   - 未刷盘宕机：磁盘旧页完好 → 直接用 redo log 恢复；
+     - 刷盘一半宕机：双写先修复坏页 → 再用 redo log 恢复；
 
 5. 极简口诀：内存修改快，redo 保不丢，undo 保回滚，双写防页坏。
 

@@ -1,4 +1,5 @@
 ---
+
 title: "区间和（前缀和）"
 published: 2025-03-11
 tags: ["笔记", "数据结构", "算法", "数组"]
@@ -27,14 +28,14 @@ draft: false
 4  
 5  
 0 1  
-1 3   
+1 3  
 输出示例
 
 3
 9
 
 解法:
-``` java
+```java
 import java.util.Scanner; //用于接收输入
 
 public class Main {

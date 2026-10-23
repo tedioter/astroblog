@@ -1,4 +1,5 @@
 ---
+
 title: "滑动窗口"
 published: 2025-03-11
 tags: ["笔记", "数据结构", "算法", "数组"]
@@ -49,7 +50,7 @@ public:
 };
 ```
 滑动窗口:
-``` java
+```java
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
         int left = 0;

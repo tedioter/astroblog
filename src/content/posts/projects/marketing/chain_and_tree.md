@@ -1,4 +1,5 @@
 ---
+
 title: "责任链和规则树"
 published: 2025-07-21
 tags: ["项目", "营销系统", "DDD"]
@@ -9,7 +10,8 @@ draft: false
 # 责任链和规则树
 
 ## 责任链
-  使用行为型设计模式的责任链模式完成前置中置过滤的解耦
+
+使用行为型设计模式的责任链模式完成前置中置过滤的解耦
 ```java
 @Service
 public class DefaultChainFactory {
@@ -99,7 +101,8 @@ public class DefaultChainFactory {
 }
 ```
 ## 规则树
-  抽象规则树完成对奖品库存或者抽奖次数的过滤
+
+抽象规则树完成对奖品库存或者抽奖次数的过滤
 ```java
  @Slf4j
 public class DecisionTreeEngine implements IDecisionTreeEngine {

@@ -1,4 +1,5 @@
 ---
+
 title: "土地分配"
 published: 2025-03-11
 tags: ["笔记", "数据结构", "算法", "数组"]
@@ -32,8 +33,8 @@ draft: false
 提示信息
 如果将区域按照如下方式划分：
 
-1 2 | 3   
-2 1 | 3   
+1 2 | 3  
+2 1 | 3  
 1 2 | 3
 
 两个子区域内土地总价值之间的最小差距可以达到 0。
@@ -44,7 +45,7 @@ draft: false
 n 和 m 不同时为 1。
 
 解法:
-``` java
+```java
 import java.util.Scanner;
 
 public class Main {
