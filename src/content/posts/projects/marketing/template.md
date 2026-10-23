@@ -1,4 +1,5 @@
 ---
+
 title: "模板模式"
 published: 2025-08-02
 tags: ["项目", "营销系统", "DDD"]
@@ -9,7 +10,8 @@ draft: false
 # 模板模式
 
 ## 抽象类定义
-  定义抽象类,实现基础接口,抽象类定义抽象方法由子类实现
+
+定义抽象类,实现基础接口,抽象类定义抽象方法由子类实现
 ```java
 @Slf4j
 public abstract class AbstractRaffleStrategy implements IRaffleStrategy {

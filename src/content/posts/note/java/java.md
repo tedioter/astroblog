@@ -1,4 +1,5 @@
 ---
+
 title: "java基础"
 published: 2026-03-13
 tags: ["笔记", "Java"]
@@ -9,6 +10,7 @@ draft: false
 # java基础
 
 ## java基本类型
+
 - byte 1B
 - short 2B
 - int 4B
@@ -18,10 +20,11 @@ draft: false
 - char 2B
 - boolean ?
 ### 布尔值的大小
-1. 作为局部变量时:  4B
-  由于jvm没有专门的1bit/Byte字节指令操作boolean,因此会直接用int代替,1是true,0是false  
+
+1. 作为局部变量时: 4B
+   由于jvm没有专门的1bit/Byte字节指令操作boolean,因此会直接用int代替,1是true,0是false
 2. 作为布尔数组的元素时: 1B  
-  jvm对布尔数组进行了优化,用byte存储,每个元素一字节  
+   jvm对布尔数组进行了优化,用byte存储,每个元素一字节
 3. 类成员变量: 1字节  
    属于对象内存布局,按字节对齐,最小一字节
 4. Boolean包装类: 16B  

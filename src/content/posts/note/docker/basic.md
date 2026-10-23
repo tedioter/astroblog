@@ -1,4 +1,5 @@
 ---
+
 title: "Docker 基础命令使用教程"
 published: 2025-12-14
 tags: ["笔记", "Docker", "容器"]
@@ -7,15 +8,19 @@ draft: false
 ---
 
 # Docker 基础命令使用教程
+
 ## 一、Docker 核心概念（快速理解）
-| 概念       | 说明                                                                 |
-|------------|----------------------------------------------------------------------|
-| 镜像（Image） | 容器的“只读模板”，包含运行应用所需的代码、依赖、配置等，不可直接修改   |
-| 容器（Container） | 镜像的运行实例，可启动、停止、删除，是独立的运行环境                 |
+
+| 概念               | 说明                                                                 |
+| ------------------ | -------------------------------------------------------------------- |
+| 镜像（Image）      | 容器的“只读模板”，包含运行应用所需的代码、依赖、配置等，不可直接修改 |
+| 容器（Container）  | 镜像的运行实例，可启动、停止、删除，是独立的运行环境                 |
 | 仓库（Repository） | 存储镜像的仓库（如 Docker Hub），用于拉取/推送镜像                   |
 
 ## 二、镜像（Image）相关命令
+
 ### 1. 查看本地镜像
+
 ```bash
 # 列出所有本地镜像（含名称、标签、ID、大小等）
 docker images
@@ -31,6 +36,7 @@ docker images --filter=reference="*nginx*"
 ```
 
 ### 2. 拉取镜像（从 Docker Hub）
+
 ```bash
 # 基本格式：docker pull [镜像名]:[标签]，标签默认latest（最新版）
 docker pull nginx                # 拉取nginx最新版
@@ -39,6 +45,7 @@ docker pull alpine:3.18          # 拉取轻量级alpine镜像
 ```
 
 ### 3. 搜索镜像
+
 ```bash
 # 搜索Docker Hub上的镜像
 docker search nginx
@@ -48,6 +55,7 @@ docker search --filter "is-official=true" nginx
 ```
 
 ### 4. 删除镜像
+
 ```bash
 # 删除单个镜像（镜像ID/名称均可）
 docker rmi nginx:latest
@@ -64,6 +72,7 @@ docker rmi $(docker images -q)
 ```
 
 ### 5. 构建自定义镜像（Dockerfile）
+
 ```bash
 # 基本格式：docker build -t [镜像名]:[标签] [Dockerfile目录]
 # -t：指定镜像标签；. 表示Dockerfile在当前目录
@@ -74,7 +83,9 @@ docker build -t my-app:v1.0 -f Dockerfile.dev .
 ```
 
 ## 三、容器（Container）相关命令
+
 ### 1. 查看容器
+
 ```bash
 # 列出运行中的容器
 docker ps
@@ -96,6 +107,7 @@ docker inspect [容器ID/容器名]
 ```
 
 ### 2. 创建并启动容器
+
 ```bash
 # 核心格式：docker run [参数] [镜像名] [容器内命令]
 # 关键参数说明：
@@ -125,6 +137,7 @@ docker run --rm nginx nginx -v  # --rm：容器退出后自动删除
 ```
 
 ### 3. 容器启停/重启
+
 ```bash
 # 启动已停止的容器
 docker start my-nginx
@@ -142,6 +155,7 @@ docker restart my-nginx
 ```
 
 ### 4. 进入容器终端
+
 ```bash
 # 推荐方式（exec，不影响容器主进程）
 docker exec -it my-nginx /bin/bash
@@ -154,6 +168,7 @@ docker attach [容器ID]
 ```
 
 ### 5. 查看容器日志
+
 ```bash
 # 查看容器全部日志
 docker logs my-nginx
@@ -169,6 +184,7 @@ docker logs --since "2025-01-01" --until "2025-01-02" my-nginx
 ```
 
 ### 6. 删除容器
+
 ```bash
 # 删除已停止的容器
 docker rm my-nginx
@@ -185,6 +201,7 @@ docker rm -f $(docker ps -aq)
 ```
 
 ### 7. 容器数据拷贝
+
 ```bash
 # 从容器拷贝文件到宿主机
 docker cp my-nginx:/etc/nginx/nginx.conf /host/conf/
@@ -194,7 +211,9 @@ docker cp /host/conf/my.conf my-nginx:/etc/nginx/conf.d/
 ```
 
 ## 四、其他常用命令
+
 ### 1. 查看 Docker 状态/信息
+
 ```bash
 # 查看Docker服务状态（Linux）
 systemctl status docker
@@ -208,6 +227,7 @@ docker version
 ```
 
 ### 2. 容器资源监控
+
 ```bash
 # 实时查看容器CPU/内存/网络等资源使用情况
 docker stats
@@ -217,6 +237,7 @@ docker stats my-nginx
 ```
 
 ### 3. 清理无用资源
+
 ```bash
 # 清理停止的容器、未使用的镜像、网络、缓存（交互式）
 docker system prune
@@ -229,6 +250,7 @@ docker builder prune
 ```
 
 ### 4. 镜像/容器重命名
+
 ```bash
 # 镜像重命名
 docker tag nginx:latest my-nginx:v1.0
@@ -238,10 +260,11 @@ docker rename my-nginx nginx-prod
 ```
 
 ## 五、常用命令速查表
-| 操作目标 | 核心命令                                  | 补充说明                     |
-|----------|-------------------------------------------|------------------------------|
-| 镜像     | `docker images`/`pull`/`rmi`/`build`      | `-f` 强制删除，`-t` 指定标签 |
-| 容器     | `docker ps`/`run`/`start`/`stop`/`rm`     | `-d` 后台运行，`-p` 端口映射 |
-| 日志     | `docker logs -f [容器名]`                 | `-tail N` 查看最后N行        |
-| 进入容器 | `docker exec -it [容器名] bash/sh`        | 推荐exec方式，避免attach     |
-| 清理     | `docker system prune`                     | `-a` 清理所有无用镜像        |
+
+| 操作目标 | 核心命令                              | 补充说明                     |
+| -------- | ------------------------------------- | ---------------------------- |
+| 镜像     | `docker images`/`pull`/`rmi`/`build`  | `-f` 强制删除，`-t` 指定标签 |
+| 容器     | `docker ps`/`run`/`start`/`stop`/`rm` | `-d` 后台运行，`-p` 端口映射 |
+| 日志     | `docker logs -f [容器名]`             | `-tail N` 查看最后N行        |
+| 进入容器 | `docker exec -it [容器名] bash/sh`    | 推荐exec方式，避免attach     |
+| 清理     | `docker system prune`                 | `-a` 清理所有无用镜像        |

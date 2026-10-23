@@ -1,4 +1,5 @@
 ---
+
 title: "螺旋矩阵"
 published: 2025-03-11
 tags: ["笔记", "数据结构", "算法", "数组"]
@@ -13,7 +14,7 @@ draft: false
 输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]
 
 解法:
-``` java
+```java
 class Solution {
 public int[][] generateMatrix(int n) {
 int[][] nums = new int[n][n];

@@ -1,4 +1,5 @@
 ---
+
 title: "建站经历"
 published: 2025-03-11
 tags: ["笔记", "杂项"]
@@ -7,18 +8,19 @@ draft: false
 ---
 
 # 建站经历
-+ 由于本人是Windows端,因此一项仅提供windows端的搭建教程
-+ 本网站是基于mkdocs并用github page部署的,意味着你需要拥有自己的github账号
-+ python环境,建议直接前往官网下载最新版即可
-+ 一个文本编辑器,这边推荐vscode
-+ git,直接去官网下载即可
-+ 新建一个文件夹并用vscode打开,打开终端输入以下代码
-+ python -m venv venv 
-+ venv/scripts/activate(这里也许会无法识别venv,~~可以换个时间再试试~~)
-+ pip install mkdocs-material
-+ mkdocs new .
-+ mkdocs serve
-+ 在你键的文件夹下新建一个.github文件夹并在.github文件夹下新建一个workflows文件夹,然后在这个文件夹下创建一个ci.yml文件,内容是
+
+- 由于本人是Windows端,因此一项仅提供windows端的搭建教程
+- 本网站是基于mkdocs并用github page部署的,意味着你需要拥有自己的github账号
+- python环境,建议直接前往官网下载最新版即可
+- 一个文本编辑器,这边推荐vscode
+- git,直接去官网下载即可
+- 新建一个文件夹并用vscode打开,打开终端输入以下代码
+- python -m venv venv
+- venv/scripts/activate(这里也许会无法识别venv,~~可以换个时间再试试~~)
+- pip install mkdocs-material
+- mkdocs new .
+- mkdocs serve
+- 在你键的文件夹下新建一个.github文件夹并在.github文件夹下新建一个workflows文件夹,然后在这个文件夹下创建一个ci.yml文件,内容是
 ```
     name: ci
 on:
@@ -50,8 +52,9 @@ jobs:
       - run: pip install mkdocs-material
       - run: mkdocs gh-deploy --force
 ```
-+ git init
-+ 这里在venv文件夹下新建一个.gitnore文件内容是
+
+- git init
+- 这里在venv文件夹下新建一个.gitnore文件内容是
 ```
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -183,11 +186,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 ```
-+ 然后可以git add .
-+ git commit -m "initial commit"
-+ 创建一个github仓库(应该都会吧我累了)
-+ git remote add 你自己的github仓库网站(以.git结尾)
-+ git branch -M main
-+ git push -u origin main
-+ 然后转到github仓库点击seting,再点击pages,Branch下选择gh-pages并save
-+ 然后在seting那一栏点击actions,你会看到workflows在部署你的网站等待一会就可以看到你的网站生成啦!!!
+
+- 然后可以git add .
+- git commit -m "initial commit"
+- 创建一个github仓库(应该都会吧我累了)
+- git remote add 你自己的github仓库网站(以.git结尾)
+- git branch -M main
+- git push -u origin main
+- 然后转到github仓库点击seting,再点击pages,Branch下选择gh-pages并save
+- 然后在seting那一栏点击actions,你会看到workflows在部署你的网站等待一会就可以看到你的网站生成啦!!!
